@@ -1,0 +1,18 @@
+Build Notes
+-----------
+
+The 32 bit and 64 bit versions of the UnitTestRunner are built seperately.  The build system will put the 32 bit version in the Build\UnitTestRunner_IA32 directory.  The 64 bit version will be placed in Build\UnitTestRunner_X64 respectively.
+
+To build the 32 bit version, open a Visual Studio x86 Tools Command Prompt and run the following commands:
+
+edksetup.bat
+build -p UnitTestRunnerPkg\UnitTestRunnerPkg.dsc -t VS2013x86 -a IA32
+
+To build the 64 bit version, open a Visual Studio x64 Cross Tools Command Prompt and run the following commands:
+
+edksetup.bat
+build -p UnitTestRunnerPkg\UnitTestRunnerPkg.dsc -t VS2013x86 -a X64
+
+It is recommended that you do not add the -n switch to specify a multi-threaded build, it does not seem to work correctly when building NT32.
+
+UnitTestRunner was originally developed, compiled and tested using SVN revision 18365 from https://svn.code.sf.net/p/edk2/code/trunk/edk2  If you have issues with a newer version of Tianocore, try this version.
