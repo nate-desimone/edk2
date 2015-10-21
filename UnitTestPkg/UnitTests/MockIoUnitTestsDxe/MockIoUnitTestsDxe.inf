@@ -1,0 +1,53 @@
+## @file
+#  Component description file for Mock I/O Library DXE Unit Test Suite
+#
+#@copyright
+#  Copyright (c) 2015 Intel Corporation. All rights reserved
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+
+[Defines]
+  INF_VERSION                     = 0x00010017
+  BASE_NAME                       = MockIoUnitTestsDxe
+  FILE_GUID                       = 58B6F3BF-5283-448F-A65C-1168D61FB5BB
+  VERSION_STRING                  = 1.0
+  MODULE_TYPE                     = DXE_DRIVER
+  ENTRY_POINT                     = MockIoUnitTestsEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES            = X64
+#
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiRuntimeServicesTableLib
+  DebugLib
+  MemoryAllocationLib
+  BaseMemoryLib
+  UnitTestLib
+  MockIoDataStorageLib
+  MockIoUnitTestsLib
+
+[Packages]
+  MdePkg/MdePkg.dec
+  UnitTestPkg/UnitTestPkg.dec
+
+[Sources]
+  MockIoUnitTestsDxe.c
+  MockIoUnitTestsDxe.h
+  DxeMockIoDataStorageTests.c
+  BaseMockIoTestsDxeWrapper.c
+
+[Protocols]
+  gEfiVariableArchProtocolGuid ## CONSUMES
+  gEfiVariableWriteArchProtocolGuid ## CONSUMES
+
+[Guids]
+
+[Depex]
+  gEfiVariableArchProtocolGuid AND
+  gEfiVariableWriteArchProtocolGuid

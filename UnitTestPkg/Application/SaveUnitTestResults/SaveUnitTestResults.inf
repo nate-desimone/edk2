@@ -1,0 +1,50 @@
+## @file
+# Unit Test Runner Test Results Output Application
+#
+#@copyright
+# Copyright (c) 2015 Intel Corporation. All rights reserved
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+#@par Specification
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = SaveUnitTestResults
+  FILE_GUID                      = 226EC403-2ACC-4D0A-ACE9-9B092E075B0C
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = UefiMain
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  SaveUnitTestResults.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  UnitTestPkg/UnitTestPkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiRuntimeServicesTableLib
+  UefiLib
+  PcdLib
+
+[Protocols]
+  ## CONSUMES
+  gEfiUnitTestResultsProtocol
+  ## CONSUMES
+  gEfiSimpleFileSystemProtocolGuid
+
+[FeaturePcd]
+  gEfiUnitTestConfigGuid.PcdOutputTestResultsToDebugLog   ## CONSUMES
+  gEfiUnitTestConfigGuid.PcdResetAfterTestResultsAreSaved ## CONSUMES
+  gEfiUnitTestConfigGuid.PcdOutputTestResultsToXmlFile    ## CONSUMES
+
+[Pcd]
+  gEfiUnitTestConfigGuid.PcdTestResultsXmlFileName        ## CONSUMES

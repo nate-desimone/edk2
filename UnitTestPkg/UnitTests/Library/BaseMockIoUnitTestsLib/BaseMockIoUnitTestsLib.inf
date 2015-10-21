@@ -1,0 +1,33 @@
+## @file
+#  Instance of I/O Library to ease creating I/O Mocks for Unit Tests
+#
+#@copyright
+#  Copyright (c) 2015 Intel Corporation. All rights reserved
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = BaseMockIoUnitTestsLib
+  FILE_GUID                      = 186B2905-BFBB-47C4-8363-8FE8BAB33600
+  MODULE_TYPE                    = BASE
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = MockIoUnitTestsLib
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  BaseMockIoTests.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  UnitTestPkg/UnitTestPkg.dec
+
+[LibraryClasses]
+  DebugLib
+  BaseLib
+  UnitTestLib
+  IoLib

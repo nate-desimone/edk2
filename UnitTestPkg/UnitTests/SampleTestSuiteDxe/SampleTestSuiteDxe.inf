@@ -1,0 +1,50 @@
+## @file
+# Component description file for Sample DXE Unit Test Suite
+#
+# @copyright
+# Copyright (c) 2015 Intel Corporation. All rights reserved
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+
+[Defines]
+  INF_VERSION                     = 0x00010017
+  BASE_NAME                       = SampleTestSuiteDxe
+  FILE_GUID                       = 26B74B18-EF49-49D2-AE7F-3639C404B044
+  VERSION_STRING                  = 1.0
+  MODULE_TYPE                     = DXE_DRIVER
+  ENTRY_POINT                     = SampleTestSuiteEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES            = X64
+#
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiRuntimeServicesTableLib
+  DebugLib
+  MemoryAllocationLib
+  BaseMemoryLib
+  UnitTestLib
+
+[Packages]
+  MdePkg/MdePkg.dec
+  UnitTestPkg/UnitTestPkg.dec
+
+[Sources]
+  SampleTestSuiteDxe.c
+  SampleTestSuiteDxe.h
+  SampleDxeTests.c
+
+[Protocols]
+  gEfiVariableArchProtocolGuid ## CONSUMES
+  gEfiVariableWriteArchProtocolGuid ## CONSUMES
+
+[Guids]
+
+[Depex]
+  gEfiVariableArchProtocolGuid AND
+  gEfiVariableWriteArchProtocolGuid

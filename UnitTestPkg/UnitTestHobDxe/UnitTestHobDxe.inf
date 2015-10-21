@@ -1,0 +1,52 @@
+## @file
+# Component description file for PEI Unit Test HOB to DXE Unit
+# Test Protocol Conversion Driver
+#
+# @copyright
+# Copyright (c) 2015 Intel Corporation. All rights reserved
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+
+[Defines]
+  INF_VERSION                     = 0x00010017
+  BASE_NAME                       = UnitTestHobDxe
+  FILE_GUID                       = 8F79253C-BDED-4C70-BE0D-2D098A83EE3D
+  VERSION_STRING                  = 1.0
+  MODULE_TYPE                     = DXE_DRIVER
+  ENTRY_POINT                     = UnitTestHobEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES            = IA32 X64 IPF ARM AARCH64 EBC
+#
+
+[LibraryClasses]
+  UefiDriverEntryPoint
+  UefiRuntimeServicesTableLib
+  DebugLib
+  MemoryAllocationLib
+  BaseMemoryLib
+  HobLib
+
+[Packages]
+  MdePkg/MdePkg.dec
+  UnitTestPkg/UnitTestPkg.dec
+
+[Sources]
+  UnitTestHobDxe.c
+
+[Protocols]
+  gEfiVariableArchProtocolGuid      ## CONSUMES
+  gEfiVariableWriteArchProtocolGuid ## CONSUMES
+  gEfiUnitTestResultsProtocol       ## PRODUCES
+
+[Guids]
+  gEfiHobListGuid         ## CONSUMES
+  gUnitTestResultsHobGuid ## CONSUMES
+
+[Depex]
+  gEfiVariableArchProtocolGuid AND
+  gEfiVariableWriteArchProtocolGuid

@@ -1,0 +1,56 @@
+## @file
+# Unit Test Package
+#
+#@copyright
+# Copyright (c) 2015 Intel Corporation. All rights reserved
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = UnitTestPkg
+  PACKAGE_GUID                   = BCE6DC74-40D2-438C-8FC9-128EFF2EC2BF
+  PACKAGE_VERSION                = 0.1
+
+[Protocols]
+  gEfiUnitTestResultsProtocol = { 0x336AB453, 0x0FDF, 0x44D8, { 0xAA, 0xB2, 0x74, 0x50, 0xF4, 0x74, 0x83, 0xDB }}
+
+[Ppis]
+  gPeiMockIoDataStoragePpi = { 0xFE2EE213, 0x0F47, 0x44F8, { 0xA6, 0xDC, 0x45, 0x06, 0x66, 0xD7, 0xCB, 0x8D }}
+
+[PcdsFeatureFlag]
+  ## Indicates if test results should be output to the debug log.<BR><BR>
+  #   TRUE  - Output test results to the debug log.<BR>
+  #   FALSE - Do not output test results to the debug log.<BR>
+  # @Prompt Output test results to the debug log.
+  gEfiUnitTestConfigGuid.PcdOutputTestResultsToDebugLog|TRUE|BOOLEAN|0x000e0001
+  ## Indicates if test results should be output to a XML file (JUnit schema)<BR><BR>
+  #   TRUE  - Output test results to the XML File.<BR>
+  #   FALSE - Do not output test results to the XML File.<BR>
+  # @Prompt Output test results to a XML File.
+  gEfiUnitTestConfigGuid.PcdOutputTestResultsToXmlFile|TRUE|BOOLEAN|0x000e0002
+  ## Enable to reset the platform after test results have been saved.<BR><BR>
+  #   TRUE  - Reset the platform after test results have been saved.<BR>
+  #   FALSE - Continue with boot after test results have been saved.<BR>
+  # @Prompt Output test results to the debug log.
+  gEfiUnitTestConfigGuid.PcdResetAfterTestResultsAreSaved|FALSE|BOOLEAN|0x000e0003
+
+[PcdsFixedAtBuild]
+  ## Name of Unit Test Results XML File with JUnit schema to save<BR><BR>
+  # @Prompt Name of Unit Test Results XML File to save
+  gEfiUnitTestConfigGuid.PcdTestResultsXmlFileName|L"TestResults.xml"|VOID*|0x000e0004
+
+[Includes]
+   Include
+
+[Includes.Ia32]
+
+[Includes.X64]
+
+[Guids]
+  ## PeiUnitTestLib.h
+  gUnitTestResultsHobGuid   = { 0xD799874F, 0x59DC, 0x4754, {0xAD, 0x3B, 0x25, 0x49, 0x49, 0xEA, 0xFB, 0xE3 }}
+  gEfiUnitTestConfigGuid    = { 0x7f0a1afc, 0xed96, 0x4faa, { 0x8b, 0x7d, 0x1b, 0xf7, 0x70, 0xc4, 0x90, 0xf7 }}
+
+[LibraryClasses]

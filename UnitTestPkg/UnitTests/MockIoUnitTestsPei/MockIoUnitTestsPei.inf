@@ -1,0 +1,52 @@
+## @file
+#  Component description file for Mock I/O Library PEI Unit Test Suite
+#
+#@copyright
+#  Copyright (c) 2015, Intel Corporation. All rights reserved
+#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = MockIoUnitTestsPei
+  FILE_GUID                      = 029608C2-F058-474A-A2CB-B8B6663582C2
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = MockIoUnitTestsEntry
+
+#
+# The following information is for reference only and not required by the build tools.
+#
+#  VALID_ARCHITECTURES           = IA32
+#
+
+[Sources]
+  MockIoUnitTestsPei.c
+  MockIoUnitTestsPei.h
+  PeiMockIoDataStorageTests.c
+  BaseMockIoTestsPeiWrapper.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  UnitTestPkg/UnitTestPkg.dec
+
+[LibraryClasses]
+  PeimEntryPoint
+  BaseMemoryLib
+  DebugLib
+  MemoryAllocationLib
+  PeiServicesLib
+  UnitTestLib
+  MockIoDataStorageLib
+  MockIoUnitTestsLib
+
+[Ppis]
+  gPeiMockIoDataStoragePpi
+
+[Guids]
+
+[Pcd]
+
+[Depex]
+  TRUE

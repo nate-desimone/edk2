@@ -1,0 +1,39 @@
+## @file
+# Instance of I/O Library to ease creating I/O Mocks for Unit Tests
+#
+# @copyright
+# Copyright (c) 2015 Intel Corporation. All rights reserved
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = PeiMockIoDataStorageLib
+  FILE_GUID                      = F7849EA3-D876-41BF-BBE6-163BD296FB99
+  MODULE_TYPE                    = PEIM
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = MockIoDataStorageLib
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  PeiMockIoDataStorageLib.c
+  PeiMockIoDataStorageLib.h
+
+[Packages]
+  MdePkg/MdePkg.dec
+  UnitTestPkg/UnitTestPkg.dec
+
+[LibraryClasses]
+  DebugLib
+  BaseLib
+  BaseMemoryLib
+  PeiServicesLib
+  PeiServicesTablePointerLib
+
+[Ppis]
+  gPeiMockIoDataStoragePpi
+  gEfiPeiMemoryDiscoveredPpiGuid

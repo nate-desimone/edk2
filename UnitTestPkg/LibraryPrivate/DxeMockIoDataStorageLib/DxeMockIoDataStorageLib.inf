@@ -1,0 +1,35 @@
+## @file
+# Instance of I/O Library to ease creating I/O Mocks for Unit Tests
+#
+# @copyright
+# Copyright (c) 2015 Intel Corporation. All rights reserved
+# SPDX-License-Identifier: BSD-2-Clause-Patent
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = DxeMockIoDataStorageLib
+  FILE_GUID                      = 6F7D9117-E7C8-47F5-9C29-3CF72278BCAB
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = MockIoDataStorageLib|DXE_DRIVER DXE_RUNTIME_DRIVER DXE_SAL_DRIVER DXE_SMM_DRIVER UEFI_APPLICATION UEFI_DRIVER
+  CONSTRUCTOR                    = DxeMockIoDataStorageLibConstructor
+  DESTRUCTOR                     = DxeMockIoDataStorageLibDestructor
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
+#
+
+[Sources]
+  DxeMockIoDataStorageLib.h
+  DxeMockIoDataStorageLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  UnitTestPkg/UnitTestPkg.dec
+
+[LibraryClasses]
+  DebugLib
+  BaseLib
+  BaseMemoryLib
